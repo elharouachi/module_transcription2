@@ -1,0 +1,8 @@
+//
+// Created by ubuntu on 24/12/2021.
+//
+
+#ifndef TRANSCRIPTION_CONSTANTS_H
+#define TRANSCRIPTION_CONSTANTS_H
+
+#endif //TRANSCRIPTION_CONSTANTS_H

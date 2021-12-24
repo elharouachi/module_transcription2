@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <ctype.h>
+#include "utils.h"
+
+#define NEC_C  "C"
+#define NEC_U  "U"
+#define RNA_SEQUENCE_FILE  "/var/www/adn/rna.txt"
+
+int main(int argc, char *argv[]) {
+    char *filePath;
+    int request_file = 0;
+    char *sequence;
+    char *rna_sequence = NULL;
+    request_file = get_path_from_user(&filePath);
+
+    if (request_file == 1) {
+        extract_sequence(filePath, &sequence);
+        while (valid_sequence(sequence) == 0)
+        {
+            printf("\nInvalid sequence. Please enter a valid sequence: ");
+            get_path_from_user(&filePath);
+            extract_sequence(filePath, &sequence);
+        }
+
+        rna_sequence = replaceWord(sequence, NEC_C, NEC_U);
+        printf("New String: %s\n", rna_sequence);
+        save_sequence(rna_sequence, RNA_SEQUENCE_FILE);
+    }
+    return 0;
+}
